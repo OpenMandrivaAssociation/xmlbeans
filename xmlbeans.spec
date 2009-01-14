@@ -8,7 +8,7 @@
 
 Summary:	XML-Java binding tool
 Name:           xmlbeans
-Version:	2.4.0
+Version:	2.3.0
 Release:	%mkrel 1
 Epoch:		0
 License:	Apache Software License 2
@@ -16,10 +16,10 @@ Group:		Development/Java
 URL:		http://xmlbeans.apache.org
 Source0:	%{name}-%{version}-src.tgz
 # svn export http://svn.apache.org/repos/asf/xmlbeans/tags/2.1.0
-Source1:	http://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans/2.4.0/xmlbeans-2.4.0.pom
-Source2:	http://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans-xpath/2.4.0/xmlbeans-xpath-2.4.0.pom
-Source3:	http://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans-xmlpublic/2.4.0/xmlbeans-xmlpublic-2.4.0.pom
-Source4:	http://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans-qname/2.4.0/xmlbeans-qname-2.4.0.pom
+Source1:	http://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans/2.3.0/xmlbeans-2.3.0.pom
+Source2:	http://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans-xpath/2.3.0/xmlbeans-xpath-2.3.0.pom
+Source3:	http://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans-xmlpublic/2.3.0/xmlbeans-xmlpublic-2.3.0.pom
+Source4:	http://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans-qname/2.3.0/xmlbeans-qname-2.3.0.pom
 BuildRequires:	jpackage-utils >= 0:1.7.5
 BuildRequires:	ant >= 0:1.6.5
 BuildRequires:	ant-junit
