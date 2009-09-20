@@ -9,7 +9,7 @@
 Summary:	XML-Java binding tool
 Name:           xmlbeans
 Version:	2.3.0
-Release:	%mkrel 1
+Release:	%mkrel 2
 Epoch:		0
 License:	Apache Software License 2
 Group:		Development/Java
