@@ -8,29 +8,28 @@
 
 Summary:	XML-Java binding tool
 Name:           xmlbeans
-Version:	2.3.0
-Release:	%mkrel 2
+Version:	2.5.0
+Release:	%mkrel 1
 Epoch:		0
 License:	Apache Software License 2
 Group:		Development/Java
 URL:		http://xmlbeans.apache.org
 Source0:	%{name}-%{version}-src.tgz
 # svn export http://svn.apache.org/repos/asf/xmlbeans/tags/2.1.0
-Source1:	http://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans/2.3.0/xmlbeans-2.3.0.pom
-Source2:	http://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans-xpath/2.3.0/xmlbeans-xpath-2.3.0.pom
-Source3:	http://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans-xmlpublic/2.3.0/xmlbeans-xmlpublic-2.3.0.pom
-Source4:	http://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans-qname/2.3.0/xmlbeans-qname-2.3.0.pom
+Source1:	http://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans/2.5.0/xmlbeans-2.5.0.pom
+Source2:	http://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans-xpath/2.5.0/xmlbeans-xpath-2.5.0.pom
+Source3:	http://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans-xmlpublic/2.5.0/xmlbeans-xmlpublic-2.5.0.pom
+Source4:	http://repo1.maven.org/maven2/org/apache/xmlbeans/xmlbeans-qname/2.5.0/xmlbeans-qname-2.5.0.pom
+Patch0:		xmlbeans-2.5.0-no-jar-download.patch
 BuildRequires:	jpackage-utils >= 0:1.7.5
 BuildRequires:	ant >= 0:1.6.5
 BuildRequires:	ant-junit
 BuildRequires:	ant-nodeps
-#BuildRequires:  ant-contrib
+BuildRequires:  ant-contrib
 BuildRequires:	junit
 BuildRequires:	xml-commons-resolver11
 BuildRequires:	bea-stax-api
-BuildRequires:	saxon8
-BuildRequires:	saxon8-dom
-BuildRequires:	saxon8-xpath
+BuildRequires:	saxon9
 BuildRequires:	java-rpmbuild
 Requires:	jpackage-utils >= 0:1.7.5
 Requires:	bea-stax-api
@@ -90,34 +89,31 @@ Scripts for %{name}.
 
 %prep
 %setup -q
-chmod -R go=u-w *
-for j in $(find . -name "*.jar"); do
-    jj=$(basename $j)
-    m=$(expr $jj : '\(piccolo_apache_dist\).*') || :
-    n=$(expr $jj : '\(jam-\).*') || :
-    if [ "$m" != "piccolo_apache_dist" -a "$n" != "jam-" ]; then
-       mv $j $j.no
-    fi
-done
+%patch0 -p1
+
+#Piccolo and jam are rebuilt from source and bundled with xbean
+# ant clean.jars leaves some dangling jars around, do not use it
+find . \( -name '*.jar' -o -name '*.zip' \) \
+-not -name 'piccolo*.jar' -not -name 'jam*.jar' \
+-not -name 'oldxbean.jar' \
+-print -delete
+
+# Replace bundled libraries
 mkdir -p build/lib
-pushd build/lib
-ln -sf $(build-classpath xml-commons-resolver) resolver.jar
-ln -sf $(build-classpath stax_1_0_api) bea-stax-api.jar
-popd
+ln -sf $(build-classpath xml-commons-resolver) build/lib/resolver.jar
+ln -sf $(build-classpath xmlbeans/xbean) external/lib/oldxbean.jar
+ln -sf $(build-classpath bea-stax-api) external/lib/jsr173_1.0_api.jar
+ln -sf $(build-classpath saxon9) external/lib/saxon9.jar
+ln -sf $(build-classpath saxon9) external/lib/saxon9-dom.jar
+ln -sf $(build-classpath junit) external/lib/junit.jar
 
-
-pushd external/lib
-mv oldxbean.jar.no oldxbean.jar
-ln -sf $(build-classpath stax_1_0_api) bea-stax-api.jar
-mkdir -p xcresolver.zipexternal/lib/
-touch xcresolver.zipexternal/lib/xcresolver.zip
-popd
-
+# Fix CRLF
+sed 's/\r//' -i LICENSE.txt NOTICE.txt README.txt docs/stylesheet.css 
 
 %build
 export XMLBEANS_EXTERNALS=/usr/share/java
 export XMLBEANS_HOME=`pwd`
-%ant default docs 
+%ant default docs
 
 %install
 rm -rf %{buildroot}
@@ -147,7 +143,6 @@ ln -s xmlpublic-%{version}.jar %{buildroot}%{_javadir}/%{name}/xmlpublic.jar
 ln -s xbean_xpath-%{version}.jar %{buildroot}%{_javadir}/%{name}/xbean_xpath.jar
 ln -s xbean-%{version}.jar %{buildroot}%{_javadir}/%{name}/xbean.jar
 
-
 # bin
 install -d -m 0755 %{buildroot}%{_bindir}
 install -p -m 0755 bin/dumpxsb   %{buildroot}%{_bindir}
@@ -161,7 +156,6 @@ install -p -m 0755 bin/xpretty   %{buildroot}%{_bindir}
 install -p -m 0755 bin/xsd2inst  %{buildroot}%{_bindir}
 install -p -m 0755 bin/xsdtree   %{buildroot}%{_bindir}
 install -p -m 0755 bin/xstc      %{buildroot}%{_bindir}
-
 
 # javadoc
 install -d -m 755 %{buildroot}%{_javadocdir}/%{name}-%{version}
