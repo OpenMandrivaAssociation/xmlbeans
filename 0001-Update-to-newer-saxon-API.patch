@@ -1,0 +1,25 @@
+From c06b729673544826892266c5778227a47c495d49 Mon Sep 17 00:00:00 2001
+From: Mikolaj Izdebski <mizdebsk@redhat.com>
+Date: Wed, 23 May 2012 11:54:56 +0200
+Subject: [PATCH] Update to newer saxon API
+
+---
+ .../xmlbeans/impl/xpath/saxon/XBeansXPath.java     |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/xpath_xquery/org/apache/xmlbeans/impl/xpath/saxon/XBeansXPath.java b/src/xpath_xquery/org/apache/xmlbeans/impl/xpath/saxon/XBeansXPath.java
+index f210e95..b972c85 100644
+--- a/src/xpath_xquery/org/apache/xmlbeans/impl/xpath/saxon/XBeansXPath.java
++++ b/src/xpath_xquery/org/apache/xmlbeans/impl/xpath/saxon/XBeansXPath.java
+@@ -27,7 +27,7 @@ import org.w3c.dom.Node;
+ import net.sf.saxon.Configuration;
+ import net.sf.saxon.dom.NodeWrapper;
+ import net.sf.saxon.om.NodeInfo;
+-import net.sf.saxon.om.VirtualNode;
++import net.sf.saxon.tree.wrapper.VirtualNode;
+ import net.sf.saxon.om.Item;
+ import net.sf.saxon.value.Value;
+ import net.sf.saxon.sxpath.XPathEvaluator;
+-- 
+1.7.7.6
+

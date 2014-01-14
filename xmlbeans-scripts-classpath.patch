@@ -1,0 +1,145 @@
+Index: xmlbeans-2.6.0/bin/dumpxsb
+===================================================================
+--- xmlbeans-2.6.0.orig/bin/dumpxsb
++++ xmlbeans-2.6.0/bin/dumpxsb
+@@ -18,9 +18,7 @@
+ #XSB file dumper
+ #Prints the contents of an xsb file in human-readmble form
+ 
+-echo `dirname $0`
+-
+-if [ -z "$XMLBEANS_LIB" ]; then . `dirname $0`/_setlib; fi
++XMLBEANS_LIB=/usr/share/java/xmlbeans
+ 
+ cp=$XMLBEANS_LIB/xbean.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar
+ 
+Index: xmlbeans-2.6.0/bin/inst2xsd
+===================================================================
+--- xmlbeans-2.6.0.orig/bin/inst2xsd
++++ xmlbeans-2.6.0/bin/inst2xsd
+@@ -18,7 +18,7 @@
+ #Instance to Schema tool
+ #Builds xsd files from xml instance files.
+ 
+-if [ -z "$XMLBEANS_LIB" ]; then . `dirname $0`/_setlib; fi
++XMLBEANS_LIB=/usr/share/java/xmlbeans
+ 
+ cp=$XMLBEANS_LIB/xbean.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar
+ 
+Index: xmlbeans-2.6.0/bin/scomp
+===================================================================
+--- xmlbeans-2.6.0.orig/bin/scomp
++++ xmlbeans-2.6.0/bin/scomp
+@@ -18,7 +18,7 @@
+ #Schema compiler
+ #Builds XBean types from xsd files.
+ 
+-if [ -z "$XMLBEANS_LIB" ]; then . `dirname $0`/_setlib; fi
++XMLBEANS_LIB=/usr/share/java/xmlbeans
+ 
+ cp=$XMLBEANS_LIB/xbean.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar:$JAVA_HOME/lib/tools.jar:$XMLBEANS_LIB/resolver.jar
+ 
+Index: xmlbeans-2.6.0/bin/sdownload
+===================================================================
+--- xmlbeans-2.6.0.orig/bin/sdownload
++++ xmlbeans-2.6.0/bin/sdownload
+@@ -18,7 +18,7 @@
+ #Schema downloader
+ #Tool to download Schema files
+ 
+-if [ -z "$XMLBEANS_LIB" ]; then . `dirname $0`/_setlib; fi
++XMLBEANS_LIB=/usr/share/java/xmlbeans
+ 
+ cp=$XMLBEANS_LIB/xbean.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar
+ 
+Index: xmlbeans-2.6.0/bin/sfactor
+===================================================================
+--- xmlbeans-2.6.0.orig/bin/sfactor
++++ xmlbeans-2.6.0/bin/sfactor
+@@ -20,7 +20,7 @@
+ ## Factors redundant definitions out of a set of schemas and 
+ ## uses imports instead.
+ 
+-if [ -z "$XMLBEANS_LIB" ]; then . `dirname $0`/_setlib; fi
++XMLBEANS_LIB=/usr/share/java/xmlbeans
+ 
+ cp=$XMLBEANS_LIB/xbean.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar:$XMLBEANS_LIB/resolver.jar
+ 
+Index: xmlbeans-2.6.0/bin/svalidate
+===================================================================
+--- xmlbeans-2.6.0.orig/bin/svalidate
++++ xmlbeans-2.6.0/bin/svalidate
+@@ -19,7 +19,7 @@
+ #
+ # Validates an instance against a schema.
+ 
+-if [ -z "$XMLBEANS_LIB" ]; then . `dirname $0`/_setlib; fi
++XMLBEANS_LIB=/usr/share/java/xmlbeans
+ 
+ cp=$XMLBEANS_LIB/xbean.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar:$XMLBEANS_LIB/jsr173_1.0_ri.jar
+ 
+Index: xmlbeans-2.6.0/bin/validate
+===================================================================
+--- xmlbeans-2.6.0.orig/bin/validate
++++ xmlbeans-2.6.0/bin/validate
+@@ -19,7 +19,7 @@
+ #
+ # Validates an instance against a schema.
+ 
+-if [ -z "$XMLBEANS_LIB" ]; then . `dirname $0`/_setlib; fi
++XMLBEANS_LIB=/usr/share/java/xmlbeans
+ 
+ cp=$XMLBEANS_LIB/xbean.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar
+ 
+Index: xmlbeans-2.6.0/bin/xpretty
+===================================================================
+--- xmlbeans-2.6.0.orig/bin/xpretty
++++ xmlbeans-2.6.0/bin/xpretty
+@@ -17,7 +17,7 @@
+ 
+ #Invokes pretty printer
+ 
+-if [ -z "$XMLBEANS_LIB" ]; then . `dirname $0`/_setlib; fi
++XMLBEANS_LIB=/usr/share/java/xmlbeans
+ 
+ cp=$XMLBEANS_LIB/xbean.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar
+ 
+Index: xmlbeans-2.6.0/bin/xsd2inst
+===================================================================
+--- xmlbeans-2.6.0.orig/bin/xsd2inst
++++ xmlbeans-2.6.0/bin/xsd2inst
+@@ -17,7 +17,7 @@
+ 
+ #Schema to instance tool
+ 
+-if [ -z "$XMLBEANS_LIB" ]; then . `dirname $0`/_setlib; fi
++XMLBEANS_LIB=/usr/share/java/xmlbeans
+ 
+ cp=$XMLBEANS_LIB/xbean.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar
+ 
+Index: xmlbeans-2.6.0/bin/xsdtree
+===================================================================
+--- xmlbeans-2.6.0.orig/bin/xsdtree
++++ xmlbeans-2.6.0/bin/xsdtree
+@@ -17,7 +17,7 @@
+ 
+ # Invokes type hierarchy printer
+ 
+-if [ -z "$XMLBEANS_LIB" ]; then . `dirname $0`/_setlib; fi
++XMLBEANS_LIB=/usr/share/java/xmlbeans
+ 
+ cp=$XMLBEANS_LIB/xbean.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar
+ 
+Index: xmlbeans-2.6.0/bin/xstc
+===================================================================
+--- xmlbeans-2.6.0.orig/bin/xstc
++++ xmlbeans-2.6.0/bin/xstc
+@@ -17,7 +17,7 @@
+ 
+ # Invokes XSTC
+ 
+-if [ -z "$XMLBEANS_LIB" ]; then . `dirname $0`/_setlib; fi
++XMLBEANS_LIB=/usr/share/java/xmlbeans
+ 
+ cp=$XMLBEANS_LIB/xbean.jar:$XMLBEANS_LIB/xmlbeans-qname.jar:$XMLBEANS_LIB/jsr173_1.0_api.jar:$XMLBEANS_LIB/resolver.jar
+ 

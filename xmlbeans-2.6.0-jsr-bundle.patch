@@ -1,0 +1,18 @@
+Index: xmlbeans-2.6.0/build.xml
+===================================================================
+--- xmlbeans-2.6.0.orig/build.xml
++++ xmlbeans-2.6.0/build.xml
+@@ -152,11 +152,11 @@
+     <target name="jsr173_1.0.jars"
+             depends="jsr173-bundle.jar, jsr173_1.0.jars.extracted"
+             unless="jsr173_1.0.jars.exist">
+-        <unjar src="external/lib/jsr173_1.0_api_bundle.jar" dest="external/lib" >
++        <!-- unjar src="external/lib/jsr173_1.0_api_bundle.jar" dest="external/lib" >
+             <patternset>
+                 <include name="jsr173_1.0_api.jar"/>
+             </patternset>
+-        </unjar>
++        </unjar -->
+ 
+         <!-- copy jsr173 API jar and license files to build/lib -->
+         <copy file="external/lib/jsr173_1.0_api.jar" tofile="build/lib/jsr173_1.0_api.jar"/>

@@ -1,0 +1,177 @@
+Index: xmlbeans-2.6.0/build.xml
+===================================================================
+--- xmlbeans-2.6.0.orig/build.xml
++++ xmlbeans-2.6.0/build.xml
+@@ -18,6 +18,7 @@
+     <property name="build.compiler" value="javac1.4"/>
+     <property name="javac.source" value="1.4"/>
+     <property name="javac.target" value="1.4"/>
++    <property name="javac.encoding" value="iso-8859-1"/>
+ 
+     <property name="version.base" value="2.6.0"/>
+     <property name="version.rc" value="-RC3"/>
+@@ -292,6 +293,7 @@
+         <javac srcdir="src/zipcompare"
+             source="${javac.source}" target="${javac.target}"
+             destdir="build/private/classes/zipcompare"
++            encoding="${javac.encoding}"
+             debug="on"/>
+     </target>
+ 
+@@ -536,6 +538,7 @@
+         <javac srcdir="src/xmlinputstream"
+             source="${javac.source}" target="${javac.target}"
+             destdir="build/classes/xmlinputstream"
++            encoding="${javac.encoding}"
+             debug="on">
+             <classpath>
+                 <pathelement location="build/classes/common"/>
+@@ -547,7 +550,7 @@
+ 
+     <target name="xmlpublic.classes" depends="dirs, jsr173_1.0.jars">
+         <mkdir dir="build/classes/xmlpublic"/>
+-        <javac srcdir="src/xmlpublic" sourcepath="src/xmlinputstream" destdir="build/classes/xmlpublic" source="${javac.source}" target="${javac.target}" debug="on">
++        <javac srcdir="src/xmlpublic" sourcepath="src/xmlinputstream" destdir="build/classes/xmlpublic" source="${javac.source}" target="${javac.target}" encoding="${javac.encoding}" debug="on">
+             <classpath>
+                 <pathelement location="build/lib/jsr173_1.0_api.jar"/>
+             </classpath>
+@@ -584,7 +587,7 @@
+ 
+     <target name="typestore.classes" depends="dirs, xmlpublic.classes, common.classes, xmlinputstream.classes">
+         <mkdir dir="build/classes/typestore"/>
+-        <javac srcdir="src/typestore" destdir="build/classes/typestore" source="${javac.source}" target="${javac.target}" debug="on">
++        <javac srcdir="src/typestore" destdir="build/classes/typestore" source="${javac.source}" target="${javac.target}" encoding="${javac.encoding}" debug="on">
+             <classpath>
+                 <pathelement location="build/lib/jsr173_1.0_api.jar"/>
+                 <pathelement location="build/classes/xmlinputstream"/>
+@@ -599,7 +602,7 @@
+ 
+     <target name="common.classes" depends="dirs, xmlpublic.classes, xmlinputstream.classes, jsr173_1.0.jars">
+         <mkdir dir="build/classes/common"/>
+-        <javac srcdir="src/common" destdir="build/classes/common" source="${javac.source}" target="${javac.target}" debug="on">
++        <javac srcdir="src/common" destdir="build/classes/common" source="${javac.source}" target="${javac.target}" encoding="${javac.encoding}" debug="on">
+             <classpath>
+                 <pathelement location="build/lib/jsr173_1.0_api.jar"/>
+                 <pathelement location="build/classes/xmlinputstream"/>
+@@ -624,7 +627,7 @@
+ 
+     <target name="typeholder.template" depends="typeholder.check, xmlpublic.classes" unless="typeholder.notRequired">
+         <mkdir dir="build/classes/typeholder"/>
+-        <javac destdir="build/classes/typeholder" source="${javac.source}" target="${javac.target}" debug="off">
++        <javac destdir="build/classes/typeholder" source="${javac.source}" target="${javac.target}" encoding="${javac.encoding}" debug="off">
+             <classpath>
+                 <pathelement location="build/classes/xmlpublic"/>
+             </classpath>
+@@ -641,7 +644,7 @@
+         repackage.classes, xmlpublic.classes, typeholder.template, typestore.classes, xsdschema.classes,
+         configschema.classes, toolschema.classes, jsr173_1.0.jars, jam.classes">
+         <mkdir dir="build/classes/typeimpl"/>
+-        <javac destdir="build/classes/typeimpl" source="${javac.source}" target="${javac.target}" debug="on">
++        <javac destdir="build/classes/typeimpl" source="${javac.source}" target="${javac.target}" encoding="${javac.encoding}" debug="on">
+             <classpath>
+                 <pathelement location="build/classes/store"/>
+                 <pathelement location="build/classes/xmlinputstream"/>
+@@ -679,7 +682,7 @@
+ 
+     <target name="xmlcomp.classes" depends="dirs, repackage.classes, typeimpl.classes, xmlpublic.classes, typestore.classes">
+         <mkdir dir="build/classes/xmlcomp"/>
+-        <javac srcdir="src/xmlcomp" destdir="build/classes/xmlcomp" source="${javac.source}" target="${javac.target}" debug="on">
++        <javac srcdir="src/xmlcomp" destdir="build/classes/xmlcomp" source="${javac.source}" target="${javac.target}" encoding="${javac.encoding}" debug="on">
+             <classpath>
+                 <pathelement location="build/lib/jsr173_1.0_api.jar"/>
+                 <pathelement location="build/classes/xmlinputstream"/>
+@@ -699,7 +702,7 @@
+ 
+     <target name="marshal.classes" depends="dirs, typeimpl.classes, xmlpublic.classes, jsr173_1.0.jars">
+         <mkdir dir="build/classes/marshal"/>
+-        <javac srcdir="src/marshal" destdir="build/classes/marshal" source="${javac.source}" target="${javac.target}" debug="on">
++        <javac srcdir="src/marshal" destdir="build/classes/marshal" source="${javac.source}" target="${javac.target}" encoding="${javac.encoding}" debug="on">
+             <classpath>
+                 <pathelement location="build/lib/jsr173_1.0_api.jar"/>
+                 <pathelement location="build/classes/configschema"/>
+@@ -716,7 +719,7 @@
+     <!-- support for running JAM under JDK1.5 ========================= -->
+ 
+     <target name="jamsupport.classes" depends="dirs,jam.classes">
+-        <javac srcdir="src/jamsupport" destdir="build/classes/jam" source="${javac.source}" target="${javac.target}" debug="on">
++        <javac srcdir="src/jamsupport" destdir="build/classes/jam" source="${javac.source}" target="${javac.target}" encoding="${javac.encoding}" debug="on">
+             <classpath id="jamsupport.compile.path">
+                 <pathelement location="build/classes/jam"/>
+             </classpath>
+@@ -727,7 +730,7 @@
+ 
+     <target name="saaj_api.classes" depends="dirs">
+         <mkdir dir="build/classes/saaj_api"/>
+-        <javac srcdir="src/saaj_api" destdir="build/classes/saaj_api" source="${javac.source}" target="${javac.target}" debug="on">
++        <javac srcdir="src/saaj_api" destdir="build/classes/saaj_api" source="${javac.source}" target="${javac.target}" encoding="${javac.encoding}" debug="on">
+             <classpath id="saaj_api.compile.path">
+                 <pathelement location="build/classes/common"/>
+                 <pathelement location="build/classes/xmlpublic"/>
+@@ -740,7 +743,7 @@
+     <target name="store.classes"
+         depends="dirs, common.classes, xmlpublic.classes, typestore.classes, saaj_api.classes, piccolo.classes">
+         <mkdir dir="build/classes/store"/>
+-        <javac srcdir="src/store" destdir="build/classes/store" source="${javac.source}" target="${javac.target}" debug="on">
++        <javac srcdir="src/store" destdir="build/classes/store" source="${javac.source}" target="${javac.target}" encoding="${javac.encoding}" debug="on">
+             <classpath id="store.compile.path">
+                 <pathelement location="build/classes/typestore"/>
+                 <pathelement location="build/lib/jsr173_1.0_api.jar"/>
+@@ -759,7 +762,7 @@
+         depends="dirs, common.classes, xmlpublic.classes, typestore.classes, saaj_api.classes, piccolo.classes,
+         typeimpl.classes, xmlcomp.classes">
+         <mkdir dir="build/classes/tools"/>
+-        <javac srcdir="src/tools" destdir="build/classes/tools" source="${javac.source}" target="${javac.target}" debug="on">
++        <javac srcdir="src/tools" destdir="build/classes/tools" source="${javac.source}" target="${javac.target}" encoding="${javac.encoding}" debug="on">
+             <classpath id="tools.compile.path">
+                 <pathelement location="build/classes/typestore"/>
+                 <pathelement location="build/lib/jsr173_1.0_api.jar"/>
+@@ -847,7 +850,7 @@
+ 
+     <target name="xmlconfig.classes" depends="dirs, xmlpublic.classes, configschema.classes">
+         <mkdir dir="build/classes/xmlconfig"/>
+-        <javac srcdir="src/xmlconfig" destdir="build/classes/xmlconfig" source="${javac.source}" target="${javac.target}" debug="on">
++        <javac srcdir="src/xmlconfig" destdir="build/classes/xmlconfig" source="${javac.source}" target="${javac.target}" encoding="${javac.encoding}" debug="on">
+             <classpath>
+                 <pathelement location="build/classes/xmlpublic"/>
+                 <pathelement location="build/classes/configschema"/>
+@@ -972,7 +975,7 @@
+ 
+     <target name="repackage.classes">
+         <mkdir dir="build/classes/repackage"/>
+-        <javac srcdir="src/repackage" destdir="build/classes/repackage" source="${javac.source}" target="${javac.target}" debug="on"/>
++        <javac srcdir="src/repackage" destdir="build/classes/repackage" source="${javac.source}" target="${javac.target}" encoding="${javac.encoding}" debug="on"/>
+     </target>
+ 
+     <!-- xpath target ============================================= -->
+@@ -991,6 +994,7 @@
+             destdir="build/classes/xpath_xquery"
+             classpathref="xpath.compile.path"
+             source="${javac.source}" target="${javac.target}"
++            encoding="${javac.encoding}"
+             debug="on">
+             <src path="src/xpath_xquery"/>
+             <classpath id="xpath.compile.path">
+@@ -1079,6 +1083,7 @@
+             destdir="build/private/classes/drt"
+             classpathref="test.compile.path"
+             source="${javac.source}" target="${javac.target}"
++            encoding="${javac.encoding}"
+             debug="on">
+             <src path="test/src/drt"/>
+         </javac>
+@@ -1138,6 +1143,7 @@
+         <javac
+             destdir="build/classes/jam"
+             source="1.4" target="1.4"
++            encoding="${javac.encoding}"
+             debug="on">
+             <src path="build/private/jam/src_repackage"/>
+             <classpath>
+@@ -1174,6 +1180,7 @@
+             destdir="build/classes/piccolo"
+             classpath=""
+             source="1.3" target="1.4"
++            encoding="${javac.encoding}"
+             debug="on">
+             <src path="build/private/piccolo/src_repackage"/>
+         </javac>

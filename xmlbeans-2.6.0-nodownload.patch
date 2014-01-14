@@ -1,0 +1,46 @@
+Index: xmlbeans-2.6.0/build.xml
+===================================================================
+--- xmlbeans-2.6.0.orig/build.xml
++++ xmlbeans-2.6.0/build.xml
+@@ -113,7 +113,7 @@
+             http://easynews.dl.sourceforge.net/sourceforge/saxon/saxonb8-7-3j.zip
+             http://easynews.dl.sourceforge.net/sourceforge/saxon/saxonb8-8j.zip
+         -->
+-        <get dest="external/lib/saxonb9-0-0-4j.zip"
++        <!-- get dest="external/lib/saxonb9-0-0-4j.zip"
+             src="http://prdownloads.sourceforge.net/saxon/saxonb9-0-0-4j.zip"
+             verbose="true" usetimestamp="true" ignoreerrors="true"/>
+         <unzip src="external/lib/saxonb9-0-0-4j.zip" dest="external/lib/">
+@@ -121,7 +121,7 @@
+                 <include name="saxon9.jar"/>
+                 <include name="saxon9-dom.jar"/>
+             </patternset>
+-        </unzip>
++        </unzip -->
+ 
+         <copy file="external/lib/saxon9.jar" tofile="build/lib/saxon9.jar"/>
+         <!-- saxon9-dom.jar is used to register DOMObjectModel -->
+@@ -137,9 +137,9 @@
+     <target name="jsr173-bundle.jar"
+             depends="jsr173-bundle.downloaded, dirs"
+             unless="jsr173-bundle.exists">
+-        <get dest="external/lib/jsr173_1.0_api_bundle.jar"
++        <!--get dest="external/lib/jsr173_1.0_api_bundle.jar"
+             src="http://www.apache.org/dist/java-repository/xmlbeans/jars/jsr173_1.0_api_bundle.jar"
+-            verbose="true" usetimestamp="true" ignoreerrors="true"/>
++            verbose="true" usetimestamp="true" ignoreerrors="true"/ -->
+     </target>
+ 
+     <target name="jsr173_1.0.jars.extracted">
+@@ -169,9 +169,9 @@
+     </target>
+ 
+     <target name="xcresolver.zip" depends="check.xcresolver.zip, dirs" unless="xcresolver.zip.exists">
+-        <get dest="external/lib/xcresolver.zip"
++        <!-- get dest="external/lib/xcresolver.zip"
+             src="http://www.apache.org/dist/xml/commons/binaries/xml-commons-resolver-1.1.zip"
+-            verbose="true" usetimestamp="true" ignoreerrors="true"/>
++            verbose="true" usetimestamp="true" ignoreerrors="true"/ -->
+     </target>
+ 
+     <target name="check.resolver.jar">

@@ -1,6 +1,2 @@
 sources:
-  "xmlbeans-2.5.0.pom:"	c8dfa01bae5e5d249211c60505619bd79dde94a5
-  "xmlbeans-2.5.0-src.tgz:"	034795c6822d68acab961bd51f5d6d106bb099bc
-  "xmlbeans-qname-2.5.0.pom:"	495f4e5ffe4f8a0b30c0491326e8a4b77ea50bd2
-  "xmlbeans-xmlpublic-2.5.0.pom:"	0b3c1492c77e4e7423e526ada9c9013d2bdbfc5f
-  "xmlbeans-xpath-2.5.0.pom:"	b01530e6e6d13f67ba0630322e68fb601ee051db
+  xmlbeans-2.6.0-src.tgz: e9004d90a9e0f5aafcdbce8140c50056341d9348
