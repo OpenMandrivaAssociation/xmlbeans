@@ -34,7 +34,7 @@
 
 Name:           xmlbeans
 Version:        2.6.0
-Release:        6.1%{?dist}%{?with_bootstrap:.boot}
+Release:        8%{?dist}%{?with_bootstrap:.boot}
 Summary:        XML-Java binding tool
 URL:            http://xmlbeans.apache.org/
 Source0:        http://www.apache.org/dist/xmlbeans/source/%{name}-%{version}-src.tgz
@@ -48,6 +48,7 @@ Patch1:         0001-Update-to-newer-saxon-API.patch
 Patch2:         xmlbeans-2.6.0-iso-8859-1-encoding.patch
 Patch3:         xmlbeans-2.6.0-jsr-bundle.patch
 Patch4:         xmlbeans-scripts-classpath.patch
+Patch5:		xmlbeans-2.6.0-xmlcomp.patch
 License:        ASL 2.0
 
 %if %without bootstrap
@@ -112,6 +113,7 @@ Requires:       %{name} = %{version}-%{release}
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
 
 
 %build
@@ -134,7 +136,7 @@ ln -sf $(build-classpath saxon) external/lib/saxon9-dom.jar
 sed 's/\r//' -i LICENSE.txt NOTICE.txt README.txt docs/stylesheet.css docs/xmlbeans.css docs/guide/tools.html
 
 # Build
-ant -Djavac.source=1.5 -Djavac.target=1.5 default docs
+ant -Djavac.source=1.6 -Djavac.target=1.6 default docs
 
 %install
 # jar

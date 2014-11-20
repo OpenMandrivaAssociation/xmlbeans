@@ -1,0 +1,10 @@
+--- xmlbeans-2.6.0/build.xml.orig	2014-11-20 22:22:21.501903469 +0000
++++ xmlbeans-2.6.0/build.xml	2014-11-20 22:22:37.052902323 +0000
+@@ -690,6 +690,7 @@
+                 <pathelement location="build/classes/xmlconfig"/>
+                 <pathelement location="build/classes/configschema"/>
+                 <pathelement location="build/classes/toolschema"/>
++		<pathelement location="build/classes/typestore"/>
+                 <pathelement location="build/classes/xsdschema"/>
+             </classpath>
+         </javac>
