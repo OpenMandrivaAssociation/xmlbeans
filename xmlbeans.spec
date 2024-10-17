@@ -36,7 +36,7 @@ Name:           xmlbeans
 Version:        2.6.0
 Release:        8%{?dist}%{?with_bootstrap:.boot}
 Summary:        XML-Java binding tool
-URL:            http://xmlbeans.apache.org/
+URL:            https://xmlbeans.apache.org/
 Source0:        http://www.apache.org/dist/xmlbeans/source/%{name}-%{version}-src.tgz
 # Pom file is not available from maven repository for the
 # currently released version
